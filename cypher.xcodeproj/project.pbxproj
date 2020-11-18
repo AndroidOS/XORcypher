@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BEC3697A2565AA3B0059ED3E /* cypher.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cypher.txt; sourceTree = "<group>"; };
 		BEF113EC25652D5600E875AF /* cypher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cypher; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF113EF25652D5600E875AF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF113EF25652D5600E875AF /* main.swift */,
+				BEC3697A2565AA3B0059ED3E /* cypher.txt */,
 			);
 			path = cypher;
 			sourceTree = "<group>";
