@@ -10,7 +10,19 @@ import Cocoa
 
 print("Hello, World!")
 
-print(readFile())
+let str = readFile()
+let nums = splitString(str: str)
+print(nums)
+
+func splitString(str:String) -> [Int] {
+    var numsArray = [Int]()
+    let nums = str.split(separator: ",")
+    for i in nums {
+        guard let n = Int(i) else { return [Int]() }
+        numsArray.append(n)
+    }
+    return numsArray
+}
 
 
 func readFile() -> String {
