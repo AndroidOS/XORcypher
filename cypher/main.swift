@@ -8,11 +8,31 @@
 import Foundation
 import Cocoa
 
-print("Hello, World!")
+let key = [101,120,112]
 
 let str = readFile()
 let nums = splitString(str: str)
+let clear_text = decypher(num: nums)
+
 print(nums)
+
+func decypher(num: [Int]) -> String{
+    let key = [101,120,112]
+    var a = ""
+    var index = 0
+    for n in num {
+        let ch = n ^ key[index]
+        let u = UnicodeScalar(ch)
+        let char = Character(u ?? "?")
+        a.append(char)
+        index += 1
+        if index > 2 {
+            index = 0
+        }
+    }
+    print(a)
+    return a
+}
 
 func splitString(str:String) -> [Int] {
     var numsArray = [Int]()
