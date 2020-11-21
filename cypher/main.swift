@@ -8,16 +8,29 @@
 import Foundation
 import Cocoa
 
-let key = [101,120,112]
+//let key = [101,120,112]
+
+
 
 let str = readFile()
 let nums = splitString(str: str)
-let clear_text = decypher(num: nums)
 
-print(nums)
+for a in 97...122 {
+    for b in 97...122 {
+        for c in 97...122 {
+            
+            print("key: \(a) \(b) \(c)")
+            let clear_text = decypher(num: nums, key: [a,b,c])
+            print(clear_text)
+        }
+    }
+    
+}
 
-func decypher(num: [Int]) -> String{
-    let key = [101,120,112]
+//print(nums)
+
+func decypher(num: [Int], key:[Int]) -> String{
+    //let key = [101,120,112]
     var a = ""
     var index = 0
     for n in num {
@@ -30,9 +43,11 @@ func decypher(num: [Int]) -> String{
             index = 0
         }
     }
-    print(a)
+   
     return a
 }
+
+
 
 func splitString(str:String) -> [Int] {
     var numsArray = [Int]()
