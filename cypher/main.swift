@@ -21,13 +21,24 @@ for a in 97...122 {
             
             print("key: \(a) \(b) \(c)")
             let clear_text = decypher(num: nums, key: [a,b,c])
-            print(clear_text)
+            if englishTest(str: clear_text){
+                print(clear_text)
+            }
         }
     }
     
 }
 
 //print(nums)
+
+func englishTest(str: String) -> Bool{
+    
+    if str.contains(" the "){
+        return true
+    }
+
+    return false
+}
 
 func decypher(num: [Int], key:[Int]) -> String{
     //let key = [101,120,112]
