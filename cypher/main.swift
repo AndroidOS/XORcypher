@@ -9,10 +9,20 @@ import Foundation
 import Cocoa
 
 
-decrypting()
+encrypting(key: [101,120,112])
 
-func encrypting(){
-    let str = readFile(str: "cypher.txt")
+func encrypting(key:[Int]){
+    var nums = [Int]()
+    let str = readFile(str: "text.txt")
+    print(str.count)
+    for ch in str {
+        let num = ch.asciiValue
+        nums.append(num)
+    }
+    print(nums)
+    let cypther1 = decypher(num: nums, key: key)
+    print(cypther1)
+    
     
 }
 
@@ -93,6 +103,13 @@ func readFile(str: String) -> String {
 }
 
 
-
+extension Character {
+    var asciiValue: Int {
+        get {
+            let s = String(self).unicodeScalars
+            return Int(s[s.startIndex].value)
+        }
+    }
+}
 
 
