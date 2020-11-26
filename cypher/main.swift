@@ -9,7 +9,31 @@ import Foundation
 import Cocoa
 
 
-let nums = encrypting(key: [101,120,112])
+let raw = readFile(str: "cypher.txt")
+let nums = splitString(str: raw)
+let key = [101,120,112]
+
+var choice = ""
+while true {
+    print("MENU")
+    print("1. Load file")
+    print("2. Decrypt file")
+    print("\n")
+    print("Q to quit\n\n")
+    
+    print("Please Enter your choice", terminator: ".")
+    choice = readLine() ?? ""
+    if choice.lowercased() == "q" {
+        break
+    }
+    print(choice)
+    print("Your choice is \(choice).")
+    
+}
+
+
+//let nums = encrypting(key: [101,120,112])
+print(nums)
 decrypting2(nums: nums)
 
 func encrypting(key:[Int]) -> [Int]{
@@ -21,7 +45,7 @@ func encrypting(key:[Int]) -> [Int]{
         nums.append(num)
     }
     //print(nums)
-    let cypther1 = decypher(num: nums, key: key)
+    //let cypther1 = decypher(num: nums, key: key)
     //print(cypther1)
     
     return nums
