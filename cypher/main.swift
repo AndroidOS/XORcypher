@@ -3,21 +3,33 @@
 //  cypher
 //
 //  Created by Manuel Carvalho on 18/11/20.
-//
+// git Added menu (1)
 
 import Foundation
 import Cocoa
 
 
-let raw = readFile(str: "cypher.txt")
-let nums = splitString(str: raw)
+//let raw = readFile(str: "cypher.txt")
+//let nums = splitString(str: raw)
 let key = [101,120,112]
-
+var text = ""
+var nums = [Int]()
 var choice = ""
+var fileLoaded = false
+var statFile = ""
 while true {
-    print("MENU")
-    print("1. Load file")
+    if fileLoaded {
+        statFile = " - File is loaded"
+    } else {
+        statFile = " - File not loaded"
+    }
+    print("MENU" + statFile + "\n")
+    print("1. Read text file")
     print("2. Decrypt file")
+    print("3. Encrypt file")
+    if fileLoaded {
+        print("4. Read Buffer")
+    }
     print("\n")
     print("Q to quit\n\n")
     
@@ -26,6 +38,16 @@ while true {
     if choice.lowercased() == "q" {
         break
     }
+    if choice == "1" {
+        text = readFile()
+        createNumArray()
+        //print(text)
+    }
+    if choice == "4" {
+        
+        print(text)
+        print(nums)
+    }
     print(choice)
     print("Your choice is \(choice).")
     
@@ -33,12 +55,12 @@ while true {
 
 
 //let nums = encrypting(key: [101,120,112])
-print(nums)
-decrypting2(nums: nums)
+//print(nums)
+//decrypting2(nums: nums)
 
 func encrypting(key:[Int]) -> [Int]{
     var nums = [Int]()
-    let str = readFile(str: "text.txt")
+    let str = readFile()
     print(str.count)
     for ch in str {
         let num = ch.asciiValue
@@ -62,7 +84,7 @@ func decrypting2(nums: [Int]){
 
 func decrypting(){
     
-    let str = readFile(str: "cypher.txt")
+    let str = readFile()
     let nums = splitString(str: str)
 
     print("Decrypting ....\n")
@@ -125,14 +147,26 @@ func splitString(str:String) -> [Int] {
 }
 
 
-func readFile(str: String) -> String {
-   var text = ""
-    do {
-        text =  try String(contentsOfFile:"/Users/manuelcarvalho/Documents/" + str)
-    } catch {
-        print("Unexpected error: \(error).")
+func readFile() -> String {
+    print("Enter name of file")
+    choice = readLine() ?? ""
+       var text = ""
+        do {
+            text =  try String(contentsOfFile:"/Users/manuelcarvalho/Documents/" + choice)
+        } catch {
+            print("Unexpected error: \(error).")
+            fileLoaded = false
+            return ""
+        }
+        fileLoaded = true
+        return text
+}
+
+func createNumArray() {
+    for ch in text {
+        let n = ch.asciiValue
+        nums.append(n)
     }
-    return text
 }
 
 
