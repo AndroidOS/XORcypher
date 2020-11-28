@@ -43,6 +43,12 @@ while true {
         createNumArray()
         //print(text)
     }
+    if fileLoaded && choice == "3" {
+        encrypting()
+        printArray()
+    } else {
+        print("File not loaded")
+    }
     if choice == "4" {
         
         print(text)
@@ -58,19 +64,30 @@ while true {
 //print(nums)
 //decrypting2(nums: nums)
 
-func encrypting(key:[Int]) -> [Int]{
-    var nums = [Int]()
-    let str = readFile()
-    print(str.count)
-    for ch in str {
-        let num = ch.asciiValue
-        nums.append(num)
+func encrypting(){
+    var index = 0
+    var xorNums = [Int]()
+   
+    for n in nums {
+        let num = n ^ key[index]
+        index += 1
+        if index > 2 {
+            index = 0
+        }
+        xorNums.append(num)
+        
     }
-    //print(nums)
-    //let cypther1 = decypher(num: nums, key: key)
-    //print(cypther1)
-    
-    return nums
+   nums = xorNums
+}
+
+func printArray() {
+    var str = ""
+    for n in nums {
+        let u = UnicodeScalar(n)
+        let char = Character(u ?? "?")
+        str.append(char)
+    }
+    print(str)
 }
 
 func decrypting2(nums: [Int]){
