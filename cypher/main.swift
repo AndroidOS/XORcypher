@@ -38,11 +38,19 @@ while true {
     if choice.lowercased() == "q" {
         break
     }
+    
     if choice == "1" {
         text = readFile()
         createNumArray()
         //print(text)
     }
+    
+    if choice == "2" {
+        decrypting()
+        //createNumArray()
+        //print(text)
+    }
+    
     if fileLoaded && choice == "3" {
         encrypting()
         printArray()
