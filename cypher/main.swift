@@ -54,6 +54,7 @@ while true {
     if fileLoaded && choice == "3" {
         encrypting()
         printArray()
+        createFile()
     } else {
         print("File not loaded")
     }
@@ -61,6 +62,12 @@ while true {
         
         print(text)
         print(nums)
+    }
+    if choice == "5" {
+        encrypting()
+        printArray()
+    } else {
+        print("File not loaded")
     }
     print(choice)
     print("Your choice is \(choice).")
@@ -96,6 +103,21 @@ func printArray() {
         str.append(char)
     }
     print(str)
+}
+
+func createFile(){
+    text = "1234567890"
+    let f = "t1234.txt"
+    
+    do {
+        //text =  try String(contentsOfFile:"/Users/manuelcarvalho/Documents/" + choice)
+        try text.write(toFile: "/Users/manuelcarvalho/Documents/" + f, atomically: true, encoding: .utf8)
+        print("File created")
+    } catch {
+        print("Unexpected error creating file: \(error).")
+        fileLoaded = false
+        
+    }
 }
 
 func decrypting2(nums: [Int]){
@@ -143,10 +165,12 @@ func englishTest(str: String) -> Bool{
 
 func decypher(num: [Int], key:[Int]) -> String{
     //let key = [101,120,112]
+    var num1 = [Int]()
     var a = ""
     var index = 0
     for n in num {
         let ch = n ^ key[index]
+        num1.append(ch)
         let u = UnicodeScalar(ch)
         let char = Character(u ?? "?")
         a.append(char)
@@ -155,7 +179,7 @@ func decypher(num: [Int], key:[Int]) -> String{
             index = 0
         }
     }
-   
+   nums = num1
     return a
 }
 
