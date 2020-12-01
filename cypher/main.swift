@@ -106,8 +106,13 @@ func printArray() {
 }
 
 func createFile(){
-    text = "1234567890"
-    let f = "t1234.txt"
+    text = ""
+    for n in nums {
+        let a = String(n) + ","
+        text.append(a)
+    }
+    print(text)
+    let f = "cypher2.txt"
     
     do {
         //text =  try String(contentsOfFile:"/Users/manuelcarvalho/Documents/" + choice)
