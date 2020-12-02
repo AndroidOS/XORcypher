@@ -111,6 +111,7 @@ func createFile(){
         let a = String(n) + ","
         text.append(a)
     }
+    text = String(text.dropLast())
     print(text)
     let f = "cypher2.txt"
     
