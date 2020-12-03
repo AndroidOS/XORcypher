@@ -11,7 +11,7 @@ import Cocoa
 
 //let raw = readFile(str: "cypher.txt")
 //let nums = splitString(str: raw)
-let key = [101,120,112]
+var key = [101,120,112]
 var text = ""
 var nums = [Int]()
 var choice = ""
@@ -29,7 +29,10 @@ while true {
     print("3. Encrypt file")
     if fileLoaded {
         print("4. Read Buffer")
+    } else {
+        print("4.")
     }
+    print("5. Enter KEY")
     print("\n")
     print("Q to quit\n\n")
     
@@ -64,11 +67,12 @@ while true {
         print(nums)
     }
     if choice == "5" {
-        encrypting()
-        printArray()
-    } else {
-        print("File not loaded")
+//        encrypting()
+//        printArray()
+        getKEY()
+        
     }
+    
     print(choice)
     print("Your choice is \(choice).")
     
@@ -79,6 +83,19 @@ while true {
 //print(nums)
 //decrypting2(nums: nums)
 
+func getKEY(){
+    var key1 = [Int]()
+    print("Enter KEY string ")
+    let choice = readLine() ?? ""
+    
+    for ch in choice {
+        let n = ch.asciiValue
+        key1.append(n)
+        print(n)
+    }
+    key = key1
+}
+
 func encrypting(){
     var index = 0
     var xorNums = [Int]()
@@ -86,7 +103,7 @@ func encrypting(){
     for n in nums {
         let num = n ^ key[index]
         index += 1
-        if index > 2 {
+        if index > key.count-1 {
             index = 0
         }
         xorNums.append(num)
